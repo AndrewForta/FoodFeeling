@@ -1,0 +1,46 @@
+CREATE TABLE feeling_Entity (
+  feeling_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  feeling_name TEXT NOT NULL
+);
+
+CREATE TABLE feeling_Entry_Entity (
+  feeling_entry_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,
+  feeling_entry_user_id INTEGER NOT NULL,
+  feeling_entry_feeling_id INTEGER NOT NULL,
+  feeling_entry_severity INTEGER NOT NULL DEFAULT 2,
+  feeling_entry_created_on TEXT NOT NULL
+);
+
+selectAllFeelings:
+SELECT *
+FROM feeling_Entity;
+
+insertFeeling:
+INSERT OR REPLACE
+INTO feeling_Entity (
+feeling_id,
+feeling_name
+) VALUES (?, ?);
+
+insertFeelingByName:
+INSERT OR REPLACE
+INTO feeling_Entity (
+feeling_name
+) VALUES (?);
+
+removeFeeling:
+DELETE FROM feeling_Entity
+WHERE feeling_id = :feeling_id;
+
+clearFeelings:
+DELETE FROM feeling_Entity
+WHERE feeling_id > -1;
+
+removeFeelingEntry:
+DELETE FROM feeling_Entry_Entity
+WHERE feeling_entry_id = :feeling_entry_id;
+
+selectAllFeelingEntries:
+SELECT *
+FROM feeling_Entry_Entity;
+

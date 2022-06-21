@@ -1,0 +1,37 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "FoodFeeling"
+include ':app'
+include ':core'
+include ':history'
+include ':history:history-datasource'
+include ':history:history-datasource-test'
+include ':history:history-domain'
+include ':history:history-interactors'
+include ':history:ui-history'
+include ':food'
+include ':food:food-datasource'
+include ':food:food-datasource-test'
+include ':food:food-domain'
+include ':food:food-interactors'
+include ':food:ui-foodEntry'
+include ':feeling'
+include ':feeling:feeling-datasource'
+include ':feeling:feeling-datasource-test'
+include ':feeling:feeling-domain'
+include ':feeling:feeling-interactors'
+include ':feeling:ui-feelingEntry'
+include ':constants'
+include ':components'

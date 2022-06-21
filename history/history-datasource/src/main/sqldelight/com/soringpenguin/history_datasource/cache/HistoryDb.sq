@@ -1,0 +1,29 @@
+CREATE TABLE history_Entry_Entity (
+  history_entry_id INTEGER NOT NULL PRIMARY KEY,
+  history_entry_username TEXT NOT NULL,
+  history_entry_name TEXT NOT NULL,
+  history_entry_type TEXT NOT NULL,
+  history_entry_created_on TEXT NOT NULL
+);
+
+insertHistoryEntry:
+INSERT OR REPLACE
+INTO history_Entry_Entity (
+  history_entry_id,
+  history_entry_username,
+  history_entry_name,
+  history_entry_type,
+  history_entry_created_on
+) VALUES (?,?,?,?,?);
+
+clearHistory:
+DELETE FROM history_Entry_Entity
+WHERE history_entry_id > -1;
+
+removeHistoryEntry:
+DELETE FROM history_Entry_Entity
+WHERE history_entry_id = :history_entry_id;
+
+selectAllHistoryEntries:
+SELECT *
+FROM history_Entry_Entity;

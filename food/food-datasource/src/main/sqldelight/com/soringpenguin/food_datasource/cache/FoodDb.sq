@@ -1,0 +1,46 @@
+CREATE TABLE food_Entity (
+  food_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  food_name TEXT NOT NULL
+);
+
+CREATE TABLE food_Entry_Entity (
+  food_entry_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,
+  food_entry_user_id INTEGER NOT NULL,
+  food_entry_food_id INTEGER NOT NULL,
+  food_entry_quantity INTEGER NOT NULL DEFAULT 2,
+  food_entry_created_on TEXT NOT NULL
+);
+
+selectAllFood:
+SELECT *
+FROM food_Entity;
+
+insertFood:
+INSERT OR REPLACE
+INTO food_Entity (
+food_id,
+food_name
+) VALUES (?, ?);
+
+insertFoodByName:
+INSERT OR REPLACE
+INTO food_Entity (
+food_name
+) VALUES (?);
+
+removeFood:
+DELETE FROM food_Entity
+WHERE food_id = :food_id;
+
+clearFood:
+DELETE FROM food_Entity
+WHERE food_id > -1;
+
+removeFoodEntry:
+DELETE FROM food_Entry_Entity
+WHERE food_entry_id = :food_entry_id;
+
+selectAllFoodEntries:
+SELECT *
+FROM food_Entry_Entity;
+
